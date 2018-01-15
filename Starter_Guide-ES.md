@@ -76,7 +76,7 @@ d1 >> play("xxox")
 hh >> play("---(-=)", pan=0.5)
 ```
 
-Los carácteres entre paréntesis se alternan en cada loop (conocidos como lazos) de tal manera que el objeto player anterior,`hh`, es literalmente `hh >> play ('-------=')` que te ahorrará mucho de escribir! Poner caracteres entre corchetes los reproduce dos veces más rápido y puedes poner  un único carácter entre corchetes. Pruébalo:
+Los carácteres entre paréntesis se alternan en cada *loop* (conocidos como lazos) de tal manera que el objeto player anterior,`hh`, es literalmente `hh >> play ('-------=')` que te ahorrará mucho de escribir! Poner caracteres entre corchetes los reproduce dos veces más rápido y puedes poner  un único carácter entre corchetes. Pruébalo:
 
 ```python
 d1 >> play("x[--]o(=[-o])")
@@ -155,7 +155,7 @@ p1 >> pluck(PTri(5), scale=Scale.default.pentatonic)
 
 ```python
 a = var([0,3],4)           # La duración puede ser un único valor 
-print int(Clock.now()), a  # `a` inicialmente tiene un valor de 0
+print int(Clock.now()), a  # 'a' inicialmente tiene un valor de 0
 >>> 0, 0
 print int(Clock.now()), a  # Despúes de 4 beats, el valor cambia a 3
 >>> 4, 3

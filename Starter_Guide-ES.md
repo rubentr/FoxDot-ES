@@ -178,4 +178,3 @@ print b             # beat = 12 ('a' ahora vale 3)
 >>> [3, 4, 5, 6]
 ```
 
-

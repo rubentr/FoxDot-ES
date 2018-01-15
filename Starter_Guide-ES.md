@@ -130,14 +130,14 @@ print PRange(10) * [1, 2]           # Pattern class behaviour
 >>> P[0, 2, 2, 6, 4, 10, 6, 14, 8, 18]
 ```
 
-Pero, ¿y si combinas patrones? En Python, puedes concatenar dos listas (añadir una a otra) utilizando el operador `+`, pero los Patrones de FoxDot lo utilizan para realizar una adición a los datos dentro de la lista. Para conectar dos objetos de patrón juntos, puede utilizar el símbolo de tuberia, `|`, con el que los usuarios de Linux estarán familiarizados. Éste se utiliza para conectar programas de línea de comandos enviando la salida de un proceso como entrada a otro.
+Pero, ¿y si combinas patrones? En Python, puedes concatenar dos listas (añadir una a otra) utilizando el operador `+`, pero FoxDot añade los datos dentro de la lista. Para conectar dos patrones juntos, puedes utilizar el símbolo de tuberia, `|`, con el que los usuarios de Linux estarán familiarizados. Éste se utiliza para conectar líneas de comandos enviando la salida de un proceso como entrada de otro.
 
 ```python
 print PRange(4) | [1,7,6]
 >>> P[0, 1, 2, 3, 1, 7, 6]
 ```
 
-FoxDot convierte automáticamente cualquier objeto que se canaliza a un patrón a la clase de patrón de base por lo que no tiene que preocuparse de asegurarse de que todo es el tipo correcto. Existen varios tipos de secuencias de patrones en FoxDot (y la lista sigue creciendo) que hacen que la generación de estos números sea un poco más fácil. Por ejemplo, para reproducir la primera octava de una escala pentatónica de abajo hacia arriba y viceversa, puedes utilizar dos objetos `PRange`:
+FoxDot convierte automáticamente cualquier objeto que se canaliza a un patrón a la clase del patrón original por lo que no tienes que preocuparse de eso. Existen varios tipos de patrones de secuencias en FoxDot (y la lista sigue creciendo) que hacen que la generación de estos números sea un poco más sencilla. Por ejemplo, para reproducir la primera octava de una escala pentatónica de abajo hacia arriba y viceversa, puedes utilizar dos objetos `PRange`:
 
 ```python
 p1 >> pluck(PRange(5) | PRange(5,0,-1), scale=Scale.default.pentatonic)
@@ -151,11 +151,11 @@ p1 >> pluck(PTri(5), scale=Scale.default.pentatonic)
 
 ## 3. TimeVars
 
-`TimeVar` es una abreviatura de "Variable dependiente del tiempo" ("*Time Dependent Variable*") y es una caracterí­stica clave (importante) de FoxDot. Un `TimeVar` tiene una serie de valores que cambian según/entre una número/serie de *beats* predefinidos y se crea usando un objeto `var` con la sintaxis `var([list_of_values],[list_of_durations])`. Por ejemplo:
+`TimeVar` es una abreviatura de "Variable dependiente del tiempo" ("*Time Dependent Variable*") y es una caracterí­stica clave de FoxDot. Un `TimeVar` tiene una serie de valores que cambian según un número de *beats* predefinidos y se crea usando un objeto `var` con la sintaxis `var([list_of_values],[list_of_durations])`. Por ejemplo:
 
 ```python
 a = var([0,3],4)           # La duración puede ser un único valor 
-print int(Clock.now()), a  # 'a' inicialmente tiene un valor de 0
+print int(Clock.now()), a  # `a` inicialmente tiene un valor de 0
 >>> 0, 0
 print int(Clock.now()), a  # Despúes de 4 beats, el valor cambia a 3
 >>> 4, 3
@@ -163,7 +163,7 @@ print int(Clock.now()), a  # Tras otros 4 beats, el valor es 0
 >>> 8, 0
 ```
 
-Cuando se utiliza un `TimeVar` en una operación matemática, los valores afectados también se convierten en `TimeVars` que cambian de estado cuando el `TimeVar` original cambia - incluso se pueden usar con patrones:
+Cuando se utiliza un `TimeVar` en una operación matemática, los valores afectados también se convierten en `TimeVars` que cambian cuando el `TimeVar` original lo hace - incluso se pueden usar con patrones:
 
 ```python
 a = var([0,3], 4)

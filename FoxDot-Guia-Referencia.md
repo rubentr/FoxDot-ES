@@ -45,19 +45,24 @@ Undocumented: Spin, Shape, Formant, BandPassFilter, Echo
 ## Funciones
 
 ### P10(n)
-Devuelve un patrón de longitud n de una serie generada aleatoriamente de 1 y 0.
+Devuelve un patrón de **longitud n** de una serie generada aleatoriamente de 1 y 0.
+ej. `P10(3)` -> `P[0, 0, 1]
 
 ### PAlt(pat1, pat2, *patN)
-Devuelve un patrón generado al alternar los valores en las secuencias dadas.
+Devuelve un patrón generado alternando los valores de las secuencias dadas.
+ej. `PAlt((1,2,3),(0,1,3))` -> `P[P(1, 2, 3), P(0, 1, 3)]`
 
 ### PDelay(*args)
 None
 
 ### PDur(n, k, start=0, dur=0.25)
-Returns the actual durations based on Euclidean rhythms (see PEuclid) where dur is the length of each step. e.g.  `PDur(3, 8)` will return `P[0.75, 0.75, 0.5]`
+Devuelve las duraciones basadas en los ritmos euclidianos (ver `PEuclid`) donde **dur** es la longitud de cada paso (*step*).
+ej.  `PDur(3, 8)` -> `P[0.75, 0.75, 0.5]`
 
 ### PEuclid(n, k)
-Returns the Euclidean rhythm which spreads 'n' pulses over 'k' steps as evenly as possible. e.g. `PEuclid(3, 8)` will return `P[1, 0, 0, 1, 0, 0, 1, 0]`
+Returns the Euclidean rhythm which spreads 'n' pulses over 'k' steps as evenly as possible.
+Devuelve el ritmo euclidiano que extiende 'n' pulsos sobre 'k' pasos lo más uniformemente posible. 
+ej. `PEuclid(3, 8)` -> `P[1, 0, 0, 1, 0, 0, 1, 0]`
 
 ### PPairs(seq, func=<lambda>)
 Laces a sequence with a second sequence obtained by performing a function on the original. By default this is lambda n: 8 - n.
@@ -66,7 +71,8 @@ Laces a sequence with a second sequence obtained by performing a function on the
 None
 
 ### PRange(start, stop=None, step=None)
-Returns a Pattern equivalent to `Pattern(range(start, stop, step))
+Devuelve un patrón equivalente a `Pattern(range(start, stop, step))`
+ej. `PRange(0,4)` -> `P[0, 1, 2, 3]`
 
 ### PRhythm(durations)
 [1,(3,8)] -> [(1,2.75,3.5),2] work in progress
@@ -76,41 +82,40 @@ PShuf(seq) -> Returns a shuffled version of seq
 
 ### PSine(n=16)
 Returns values of one cycle of sine wave split into 'n' parts
+Devuelve los valores de un ciclo de onda sinusoidal dividida en 'n' partes.
+ej. `PSine(3)` -> `P[0.0, 0.8660254037844387, -0.8660254037844384]`
 
 ### PSq(a=1, b=2, c=3)
 Returns a Pattern
+ej. `PSq(1,5,7)` -> `P[1, 32, 243, 1024, 3125, 7776, 16807]`
 
 ### PStep(n, value, default=0)
 Returns a Pattern that every n-term is 'value' otherwise 'default'
 
 ### PStretch(seq, size)
-Returns 'seq' as a Pattern and looped until its length is 'size' e.g. `PStretch([0,1,2], 5)` returns `P[0, 1, 2, 0, 1]`
+Returns 'seq' as a Pattern and looped until its length is 'size'.
+ej. `PStretch([0,1,2], 5)` -> `P[0, 1, 2, 0, 1]`
 
 ### PStutter(x, n=2)
 PStutter(seq, n) -> Creates a pattern such that each item in the array is repeated n times (n can be a pattern)
 
 ### PSum(n, total, **kwargs)
 Returns a Pattern of length 'n' that sums to equal 'total'
-
-p.ej.:
-
-   `PSum(3,8) -> P[3, 3, 2]`
-    
-   `PSum(5,4) -> P[1, 0.75, 0.75, 0.75, 0.75]`
-
+ej. `PSum(3,8) -> P[3, 3, 2]`; `PSum(5,4) -> P[1, 0.75, 0.75, 0.75, 0.75]`
 
 ### PTri(start, stop=None, step=None)
-Returns a Pattern equivalent to `Pattern(range(start, stop, step))` with its reversed form appended.
+Devuelve un patrón equivalente a `Pattern(range(start, stop, step))` con su forma invertida añadida.
+ej. `PTri(4)` -> `P[0, 1, 2, 3, 4, 3, 2, 1]`
 
 ### PZip(pat1, pat2, *patN)
-Crea un *pattern* que agrupa como una cremallera (*zips*) varios *patterns*. `PZip([0,1,2], [3,4])` crea el *pattern* `P[(0, 3), (1, 4), (2, 3), (0, 4), (1, 3), (2, 4)]`
+Crea un *pattern* que agrupa como una cremallera (*zips*) varios *patterns*. 
+ej. `PZip([0,1,2], [3,4])` -> `P[(0, 3), (1, 4), (2, 3), (0, 4), (1, 3), (2, 4)]`
 
 ### PZip2(pat1, pat2, rule=<lambda>)
 Como PZip pero sólo con dos *patterns*. Agrupa los valores si cumplen la condición (*rule*).
 
-
 ## Classes
-PGroupDiv(self, *args, **kwargs)
+`PGroupDiv(self, *args, **kwargs)`
 Stutter every other request
 
 Methods

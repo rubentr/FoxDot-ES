@@ -6,46 +6,56 @@ Traducción parcial de la documentación de [FoxDot](http://foxdot.org/): Live C
 ## SynthDefs
 `print(SynthDefs)`
 
-sawbass karp gong varsaw bell scratch pulse audioin blip pads rave donk saw orient creep growl marimba razz dub arpy ambi viola piano quin crunch noise star bass dab dirt twang swell pluck glass soprano charm spark bug squish sitar zap snick play2 play1 prophet ripple fuzz lazer klank nylon soft scatter loop
+> sawbass karp gong varsaw bell scratch pulse audioin blip pads rave donk saw orient creep growl marimba razz dub arpy ambi viola piano quin crunch noise star bass dab dirt twang swell pluck glass soprano charm spark bug squish sitar zap snick play2 play1 prophet ripple fuzz lazer klank nylon soft scatter loop
+
+ej. `d1 >> sawbass()`
 
 ## Escalas
 `print(Scale.names())`
 
-chromatic dorian dorian2 egyptian freq harmonicMajor harmonicMinor indian justMajor justMinor locrian locrianMajor lydian lydianMinor major majorPentatonic melodicMinor minor minorPentatonic mixolydian phrygian prometheus ryan zhi
+> chromatic dorian dorian2 egyptian freq harmonicMajor harmonicMinor indian justMajor justMinor locrian locrianMajor lydian lydianMinor major majorPentatonic melodicMinor minor minorPentatonic mixolydian phrygian prometheus ryan zhi
+
+ej. `Scale.default.set("minor")`
+    `Scale.deafult="minor"`
+
+## bpm
+Beats por minuto
+
+`clock.bpm=150`
 
 ## Efectos/ Atributos
 `print(Player.get_attributes())`
 
-degree oct freq dur delay buf blur amplify scale bpm sample env sus fmod pan rate amp midinote channel vib vibdepth slide sus slidedelay slidefrom bend benddelay coarse pshift hpr hpf lpf lpr swell bpr bpnoise bpf crush bits amp dist chop decay echo spin cut mix room formant shape
+> degree oct freq dur delay buf blur amplify scale bpm sample env sus fmod pan rate amp midinote channel vib vibdepth slide sus slidedelay slidefrom bend benddelay coarse pshift hpr hpf lpf lpr swell bpr bpnoise bpf crush bits amp dist chop decay echo spin cut mix room formant shape
 
 Effects are added to Player objects as keywords instructions like `dur` or `amp` but are a little more tricky. Each effect has a "title" keyword, which requires a nonzero value to add the effect to a Player. Effects also have other attribute keywords which can be any value and may have a default value which is set when a Player is created.
 
-- *High Pass Filter* - Title keyword: `hpf`, Attribute keyword(s): `hpr` Only frequences above the value of `hpf` are kept in the final signal. Use `hpr` to set the resonance (usually a value between 0 and 1)
+- *High Pass Filter* - Title keyword: `hpf`, Attribute keyword(s): `hpr`. Solo frecuencias por encima del valor de `hpf` se mantienen en la señal final. Usa `hpr` para establecer la resonancia (generalmente un valor entre 0 y 1).
 
-- *Low Pass Filter* - Title keyword: `lpf`, Attribute keyword(s): `lpr` Only frequences below the value of `lpf` are kept in final signal. Use `lpr` to set the resonance (usually a value between 0 and 1)
+- *Low Pass Filter* - Title keyword: `lpf`, Attribute keyword(s): `lpr`. Solo frecuencias por debajo del valor de `lpf` se mantienen en la señal final. Usa `lpr` para establecer la resonancia (generalmente un valor entre 0 y 1).
 
- - *Bitcrush* - Title keyword: `bits`, Attribute keyword(s): `crush` The bit depth, in number of bits, that the signal is reduced to; this is a value between 1 and 24 where other values are ignored. Use crush to set the amount of reduction to the bitrate (defaults to 8)
+ - *Bitcrush* - Title keyword: `bits`, Attribute keyword(s): `crush`. La profundidad de *bits*, en número de *bits*, a la que se reduce la señal; este es un valor entre 1 y 24 donde se ignoran otros valores. Usa `crush` para establecer la cantidad de reducción de la velocidad de bits -*bitrate*- (por defecto es 8).
 
-- *Reverb* - Title keyword: `room`, Attribute keyword(s): `mix` The room argument specifies the size of the room and mix is the dry/wet mix of reverb; this should be a value between 0 and 1 (defalts to 0.25)
+- *Reverb* - Title keyword: `room`, Attribute keyword(s): `mix`. El argumento `room` especifica el tamaño de la sala y `mix` es la mezcla seca / húmeda (*dry/wet*) de reverberación; un valor entre 0 y 1 (por defecto es 0.25).
 
- - *Chop* - Title keyword: `chop`, Attribute keyword(s): `sus` 'Chops'` the signal into chunks using a low frequency pulse wave over the sustain of a note.
+ - *Chop* - Title keyword: `chop`, Attribute keyword(s): `sus`. Corta la señal en trozos usando una onda de pulso de baja frecuencia sobre el *sustain* de una nota.
 
- - *Slide To* - Title keyword: `slide`, Attribute keyword(s): `Slides'` the frequency value of a signal to freq * (slide+1) over the duration of a note (defaults to 0)
+ - *Slide To* - Title keyword: `slide`, Attribute keyword(s): `Slides` the frequency value of a signal to freq * (slide+1) over the duration of a note (defaults to 0)
 
  - *Slide From* - Title keyword: `slidefrom`, Attribute keyword(s): `Slides'` the frequency value of a signal from freq * (slidefrom) over the duration of a note (defaults to 1)
 
-- *Comb delay* (echo) - Title keyword: `echo`, Attribute keyword(s): `decay` Sets the decay time for any echo effect in beats, works best on Sample Player (defaults to 0)
+- *Comb delay* (echo) - Title keyword: `echo`, Attribute keyword(s): `decay`. Establece el tiempo de caída (*decay*) para cualquier efecto de eco en *beats*, funciona mejor con un Sample Player (por defecto es 0).
 
-- *Panning* - Title keyword: `pan`, Attribute keyword(s): `Panning`, where -1 is far left, 1 is far right (defaults to 0)
+- *Panning* - Title keyword: `pan`, Attribute keyword(s): `Panning`, donde -1 está más a la izquierda, 1 está muy a la derecha (por defecto es 0).
 
-- *Vibrato* - Title keyword: `vib`, Attribute keyword(s): `Vibrato` (defaults to 0)
+- *Vibrato* - Title keyword: `vib`, Attribute keyword(s): `Vibrato` (por defecto es 0)
 
 Undocumented: Spin, Shape, Formant, BandPassFilter, Echo
 
 ## Funciones
 
 ### P10(n)
-Devuelve un patrón de **longitud n** de una serie generada aleatoriamente de 1 y 0.
+Devuelve un patrón de longitud *n* de una serie generada aleatoriamente de 1 y 0.
 
 ej. `P10(3)` -> `P[0, 0, 1]
 
@@ -58,59 +68,62 @@ ej. `PAlt((1,2,3),(0,1,3))` -> `P[P(1, 2, 3), P(0, 1, 3)]`
 None
 
 ### PDur(n, k, start=0, dur=0.25)
-Devuelve las duraciones basadas en los ritmos euclidianos (ver `PEuclid`) donde **dur** es la longitud de cada paso (*step*).
+Devuelve las duraciones basadas en los ritmos euclidianos (ver `PEuclid`) donde *dur* es la longitud de cada paso (*step*).
 
 ej.  `PDur(3, 8)` -> `P[0.75, 0.75, 0.5]`
 
 ### PEuclid(n, k)
-Returns the Euclidean rhythm which spreads 'n' pulses over 'k' steps as evenly as possible.
-Devuelve el ritmo euclidiano que extiende 'n' pulsos sobre 'k' pasos lo más uniformemente posible. 
+Devuelve el ritmo euclidiano que extiende *n* pulsos sobre *k* pasos lo más uniformemente posible. 
 
 ej. `PEuclid(3, 8)` -> `P[1, 0, 0, 1, 0, 0, 1, 0]`
 
 ### PPairs(seq, func=<lambda>)
-Laces a sequence with a second sequence obtained by performing a function on the original. By default this is lambda n: 8 - n.
+Encadena una secuencia con una segunda secuencia obtenida al realizar una función en el original. Por defecto esto es lambda n: 8 - n.
 
 ### PQuicken(dur=0.5, stepsize=3, steps=6)
 None
 
 ### PRange(start, stop=None, step=None)
-Devuelve un patrón equivalente a `Pattern(range(start, stop, step))`
+Devuelve un patrón equivalente a `Pattern(range(start, stop, step))`.
 
 ej. `PRange(0,4)` -> `P[0, 1, 2, 3]`
 
 ### PRhythm(durations)
-[1,(3,8)] -> [(1,2.75,3.5),2] work in progress
+[1,(3,8)] -> [(1,2.75,3.5),2] en progreso
 
 ### PShuf(seq)
-PShuf(seq) -> Returns a shuffled version of seq
+Devuelve una versión mezclada de *seq*.
 
 ### PSine(n=16)
-Returns values of one cycle of sine wave split into 'n' parts
-Devuelve los valores de un ciclo de onda sinusoidal dividida en 'n' partes.
+Devuelve los valores de un ciclo de una onda sinusoidal dividida en *n* partes.
 
 ej. `PSine(3)` -> `P[0.0, 0.8660254037844387, -0.8660254037844384]`
 
 ### PSq(a=1, b=2, c=3)
-Returns a Pattern
+Devuelve un patrón
 
 ej. `PSq(1,5,7)` -> `P[1, 32, 243, 1024, 3125, 7776, 16807]`
 
 ### PStep(n, value, default=0)
-Returns a Pattern that every n-term is 'value' otherwise 'default'
+Devuelve un patrón en el que que cada término *n* es *value*; de lo contrario *default* igual a 0.
+
+ej. `PStep(2,2)` -> `P[0,2]`
 
 ### PStretch(seq, size)
-Returns 'seq' as a Pattern and looped until its length is 'size'.
+Devuelve *seq* como un patrón y en bucle hasta que su longitud sea *size*.
 
 ej. `PStretch([0,1,2], 5)` -> `P[0, 1, 2, 0, 1]`
 
 ### PStutter(x, n=2)
-PStutter(seq, n) -> Creates a pattern such that each item in the array is repeated n times (n can be a pattern)
+Crea un patrón tal que cada elemento de la matriz se repite *n* veces (*n* puede ser un patrón).
+
+ej. `PStutter(5,2)` -> `P[5,5]`
 
 ### PSum(n, total, **kwargs)
-Returns a Pattern of length 'n' that sums to equal 'total'
+Devuelve un patrón de longitud *n* que suma igual a *total*.
 
-ej. `PSum(3,8) -> P[3, 3, 2]`; `PSum(5,4) -> P[1, 0.75, 0.75, 0.75, 0.75]`
+ej. `PSum(3,8) -> P[3, 3, 2]`
+    `PSum(5,4) -> P[1, 0.75, 0.75, 0.75, 0.75]`
 
 ### PTri(start, stop=None, step=None)
 Devuelve un patrón equivalente a `Pattern(range(start, stop, step))` con su forma invertida añadida.
@@ -130,7 +143,7 @@ Como PZip pero sólo con dos *patterns*. Agrupa los valores si cumplen la condic
 
 Stutter every other request
 
-Methods
+## Métodos
 
 ### __getitem__(self, key)
 Overrides the Pattern.getitem to allow indexing by TimeVar and PlayerKey instances.
@@ -170,7 +183,7 @@ Returns true if all of the patterns contents satisfies func(x) - default is nonz
 Merges and laces the first and last two items such that a drum pattern "x-o-" would become "(x[xo])-o([-o]-)"
 
 ### asGroup(self)
-Returns the Pattern as a PGroup
+Returns the Pattern as a `PGroup`
 
 ### choose(self)
 Returns one randomly selected item
@@ -185,17 +198,16 @@ Returns a copy of the Pattern such that alterations to the Pattern.data do not a
 Returns the number of occurrences of item in the Pattern
 
 ### deep_shuffle(self, n=1)
-Returns a new Pattern with shuffled contents and shuffles any nested patterns. To shuffle the contents of nested patterns with the rest 
-
-of the Pattern's contents, use true_shuffle.
+Returns a new Pattern with shuffled contents and shuffles any nested patterns. To shuffle the contents of nested patterns with the rest of the Pattern's contents, use true_shuffle.
 
 ### every(self, n, method, *args, **kwargs)
 Returns the pattern looped n-1 times then appended with the version returned when method is called on it.
+Devuelve el patrón en bucle n-1 veces y luego se agrega con la versión devuelta cuando se invoca el método.
 
 ### flatten(self)
-Returns a nested PGroup as un-nested e.g.
+Returns a nested `PGroup` as un-nested e.g.
 
->>> `P(0,(3,5)).flatten()` -> `P(0, 3, 5)`
+`P(0,(3,5)).flatten()` -> `P(0, 3, 5)`
 
 ### get_behaviour(self)
 Returns a function that modulates a player event dictionary
@@ -213,9 +225,7 @@ Inverts the values with the Pattern.
 Returns a generator object equivalent to using enumerate()
 
 ### layer(self, method, *args, **kwargs)
-Zips a pattern with a modified version of itself. Method argument can be a function that takes this pattern as its first argument, or 
-
-the name of a Pattern method as a string.
+Zips a pattern with a modified version of itself. Method argument can be a function that takes this pattern as its first argument, or the name of a Pattern method as a string.
 
 ### limit((((('self',),),),), (((('func',),),),), (((('value',),),),))
 Returns a new Pattern generated by adding elements from this Pattern to a new list and repeatedly calling func() on this list until 
@@ -266,12 +276,10 @@ Reverses the contents of the Pattern. Nested patterns are not reversed. To rever
 Returns an n-length pattern from a sample
 
 ### shuffle(self, n=1)
-Returns a new Pattern with shuffled contents. Note: nested patterns stay together. To shuffle the contents of nested patterns, use 
-
-deep_shuffle or true_shuffle.
+Returns a new Pattern with shuffled contents. Note: nested patterns stay together. To shuffle the contents of nested patterns, use *deep_shuffle* or *true_shuffle*.
 
 ### shufflets(self, n)
-Returns a Pattern of 'n' number of PGroups made from shuffled versions of the original Pattern
+Returns a Pattern of 'n' number of `PGroups` made from shuffled versions of the original Pattern
 
 ### sort(self)
 Used in place of sorted(pattern) to force type

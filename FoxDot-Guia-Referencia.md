@@ -21,43 +21,43 @@ ej. `Scale.default.set("minor")`
 ## bpm
 Beats por minuto
 
-`clock.bpm=150`
+`Clock.bpm=150`
 
 ## Efectos/ Atributos
 `print(Player.get_attributes())`
 
 > degree oct freq dur delay buf blur amplify scale bpm sample env sus fmod pan rate amp midinote channel vib vibdepth slide sus slidedelay slidefrom bend benddelay coarse pshift hpr hpf lpf lpr swell bpr bpnoise bpf crush bits amp dist chop decay echo spin cut mix room formant shape
 
-Effects are added to Player objects as keywords instructions like `dur` or `amp` but are a little more tricky. Each effect has a "title" keyword, which requires a nonzero value to add the effect to a Player. Effects also have other attribute keywords which can be any value and may have a default value which is set when a Player is created.
+Effects are added to Player objects as keywords instructions like `dur` or `amp` but are a little more tricky. Each effect has a "title" keyword, which requires a nonzero value to add the effect to a Player. Effects also have other Palabra clave de atributos which can be any value and may have a default value which is set when a Player is created.
 
-- *High Pass Filter* - Title keyword: `hpf`, Attribute keyword(s): `hpr`. Solo frecuencias por encima del valor de `hpf` se mantienen en la señal final. Usa `hpr` para establecer la resonancia (generalmente un valor entre 0 y 1).
+- *High Pass Filter* - Palabra clave del título: `hpf`, Palabra clave de atributo(s): `hpr`. Solo frecuencias por encima del valor de `hpf` se mantienen en la señal final. Usa `hpr` para establecer la resonancia (generalmente un valor entre 0 y 1).
 
-- *Low Pass Filter* - Title keyword: `lpf`, Attribute keyword(s): `lpr`. Solo frecuencias por debajo del valor de `lpf` se mantienen en la señal final. Usa `lpr` para establecer la resonancia (generalmente un valor entre 0 y 1).
+- *Low Pass Filter* - Palabra clave del título: `lpf`, Palabra clave de atributo(s): `lpr`. Solo frecuencias por debajo del valor de `lpf` se mantienen en la señal final. Usa `lpr` para establecer la resonancia (generalmente un valor entre 0 y 1).
 
- - *Bitcrush* - Title keyword: `bits`, Attribute keyword(s): `crush`. La profundidad de *bits*, en número de *bits*, a la que se reduce la señal; este es un valor entre 1 y 24 donde se ignoran otros valores. Usa `crush` para establecer la cantidad de reducción de la velocidad de bits -*bitrate*- (por defecto es 8).
+- *Bitcrush* - Palabra clave del título: `bits`, Palabra clave de atributo(s): `crush`. La profundidad de *bits*, en número de *bits*, a la que se reduce la señal; este es un valor entre 1 y 24 donde se ignoran otros valores. Usa `crush` para establecer la cantidad de reducción de la velocidad de bits -*bitrate*- (por defecto es 8).
 
-- *Reverb* - Title keyword: `room`, Attribute keyword(s): `mix`. El argumento `room` especifica el tamaño de la sala y `mix` es la mezcla seca / húmeda (*dry/wet*) de reverberación; un valor entre 0 y 1 (por defecto es 0.25).
+- *Reverb* - Palabra clave del título: `room`, Palabra clave de atributo(s): `mix`. El argumento `room` especifica el tamaño de la sala y `mix` es la mezcla seca / húmeda (*dry/wet*) de reverberación; un valor entre 0 y 1 (por defecto es 0.25).
 
- - *Chop* - Title keyword: `chop`, Attribute keyword(s): `sus`. Corta la señal en trozos usando una onda de pulso de baja frecuencia sobre el *sustain* de una nota.
+- *Chop* - Palabra clave del título: `chop`, Palabra clave de atributo(s): `sus`. Corta la señal en trozos usando una onda de pulso de baja frecuencia sobre el *sustain* de una nota.
 
- - *Slide To* - Title keyword: `slide`, Attribute keyword(s): `Slides` the frequency value of a signal to freq * (slide+1) over the duration of a note (defaults to 0)
+- *Slide To* - Palabra clave del título: `slide`, Palabra clave de atributo(s): `Slides` the frequency value of a signal to freq * (slide+1) over the duration of a note (defaults to 0)
 
- - *Slide From* - Title keyword: `slidefrom`, Attribute keyword(s): `Slides'` the frequency value of a signal from freq * (slidefrom) over the duration of a note (defaults to 1)
+- *Slide From* - Palabra clave del título: `slidefrom`, Palabra clave de atributo(s): `Slides'` the frequency value of a signal from freq * (slidefrom) over the duration of a note (defaults to 1)
 
-- *Comb delay* (echo) - Title keyword: `echo`, Attribute keyword(s): `decay`. Establece el tiempo de caída (*decay*) para cualquier efecto de eco en *beats*, funciona mejor con un Sample Player (por defecto es 0).
+- *Comb delay* (echo) - Palabra clave del título: `echo`, Palabra clave de atributo(s): `decay`. Establece el tiempo de caída (*decay*) para cualquier efecto de eco en *beats*, funciona mejor con un Sample Player (por defecto es 0).
 
-- *Panning* - Title keyword: `pan`, Attribute keyword(s): `Panning`, donde -1 está más a la izquierda, 1 está muy a la derecha (por defecto es 0).
+- *Panning* - Palabra clave del título: `pan`, Palabra clave de atributo(s): `Panning`, donde -1 está más a la izquierda, 1 está muy a la derecha (por defecto es 0).
 
-- *Vibrato* - Title keyword: `vib`, Attribute keyword(s): `Vibrato` (por defecto es 0)
+- *Vibrato* - Palabra clave del título: `vib`, Palabra clave de atributo(s): `Vibrato` (por defecto es 0)
 
-Undocumented: Spin, Shape, Formant, BandPassFilter, Echo
+Undocumented: Spin, Shape, Formant, BandPassFilter, Echo, cutoff
 
 ## Funciones
 
 ### P10(n)
 Devuelve un patrón de longitud *n* de una serie generada aleatoriamente de 1 y 0.
 
-ej. `P10(3)` -> `P[0, 0, 1]
+ej. `P10(3)` -> `P[0, 0, 1]`
 
 ### PAlt(pat1, pat2, *patN)
 Devuelve un patrón generado alternando los valores de las secuencias dadas.
@@ -150,22 +150,25 @@ Overrides the Pattern.getitem to allow indexing by TimeVar and PlayerKey instanc
 
 ### __invert__(self)
 Using the ~ symbol as a prefix to a Pattern will reverse it.
+Usar el símbolo ~ como prefijo de un Patrón lo invertirá.
 
-`a = P[:4] print(a, ~a) P[0, 1, 2, 3], P[3, 2, 1, 0]`
+ej. `a = P[:4]` 
+`print(a, ~a)` -> `P[0, 1, 2, 3], P[3, 2, 1, 0]`
 
 ### __iter__(self)
 Returns a generator object for this Pattern
+Devuelve un objeto generador para este Patrón.
 
 ### __len__(self)
 Returns the *expanded" length of the pattern. e.g. the following are identical.
+Devuelve la longitud *expandida* del patrón. Por ejemplo, los siguientes son idénticos.
 
->>> print( len(P[0,1,2,[3,4]]) )
-8
->>> print( len(P[0,1,2,3,0,1,2,4]) )
-8
+`print( len(P[0,1,2,[3,4]]) )` -> 8
+`print( len(P[0,1,2,3,0,1,2,4]) )` ->8
 
 ### __or__(self, other)
 Use the '|' symbol to 'pipe' Patterns into on another
+Usa el símbolo `|` para 'pipe' Patterns en otro
 
 ### __ror__(self, other)
 Use the '|' symbol to 'pipe' Patterns into on another
@@ -175,21 +178,27 @@ Only works in Python 2
 
 ### accum((((('self',),),),), (((('n', None), None), None), None)=None)
 Returns a Pattern that is equivalent to list of sums of that Pattern up to that index.
+Devuelve un Patrón que es equivalente a la lista de sumas de ese Patrón hasta ese índice.
 
 ### all(self, func=<lambda>)
 Returns true if all of the patterns contents satisfies func(x) - default is nonzero
+Devuelve verdadero si todos los contenidos de los patrones satisfacen `func (x)` - el valor predeterminado es distinto de cero.
 
 ### amen(self, size=2)
 Merges and laces the first and last two items such that a drum pattern "x-o-" would become "(x[xo])-o([-o]-)"
+Fusiona y encadena el primero y los últimos dos elementos de modo que un patrón de batería `x-o-` se convierta en `(x[xo])-o([-o]-)`.
 
 ### asGroup(self)
 Returns the Pattern as a `PGroup`
+Devuelve el patrón como un `PGroup`.
 
 ### choose(self)
 Returns one randomly selected item
+Devuelve un elemento escogido al azar.
 
 ### contains_nest(self)
 Returns true if the pattern contains a nest
+Devuelve verdadero si el patrón contiene un nido??.
 
 ### copy(self)
 Returns a copy of the Pattern such that alterations to the Pattern.data do not affect the original.
@@ -217,6 +226,7 @@ Is called by getitem
 
 ### group(self)
 Returns the Pattern as a PGroup
+Devuelve el patrón como un grupo `PGroup`
 
 ### invert(self)
 Inverts the values with the Pattern.
@@ -255,22 +265,29 @@ Returns the original pattern with mirrored version of itself appended.
 - removes values from the end of the pattern, should be negative.
 
 ej.
-`P[:4].palindrome()` -> `P[0, 1, 2, 3, 3, 2, 1, 0]` 
+`P[:4].palindrome()` -> `P[0, 1, 2, 3, 3, 2, 1, 0]`
+
 `P[:4].palindrome(1)` -> `P[0, 1, 2, 3, 2, 1, 0]`
+
 `P[:4].palindrome(-1)` -> `P[0, 1, 2, 3, 3, 2, 1]`
+
 `P[:4].palindrome(1,-1)` -> `P[0, 1, 2, 3, 2, 1]`
 
 ### pipe(self, pattern)
 Concatonates this patterns stream with another
+Concatena este flujo de patrones con otro.
 
 ### pivot((((('self',),),),), (((('i',),),),))
-Mirrors and rotates the Pattern such that the item at index 'i' is in the same place
+Mirrors and rotates the Pattern such that the item at index `i` is in the same place
+Refleja y gira el patrón de modo que el elemento en el índice `i` esté en el mismo lugar.
 
 ### replace(self, sub, repl)
 Replaces any occurrences of "sub" with "repl"
+Reemplaza cualquier ocurrencia de "sub" con "repl".
 
 ### reverse(self)
 Reverses the contents of the Pattern. Nested patterns are not reversed. To reverse the contents of nester patterns use Pattern.mirror()
+Revierte el contenido del Patrón. Los patrones anidados no se revierten. Para revertir el contenido de patrones de patrones, use `Pattern.mirror()`.
 
 ### sample((((('self',),),),), (((('n',),),),))
 Returns an n-length pattern from a sample
@@ -279,7 +296,7 @@ Returns an n-length pattern from a sample
 Returns a new Pattern with shuffled contents. Note: nested patterns stay together. To shuffle the contents of nested patterns, use *deep_shuffle* or *true_shuffle*.
 
 ### shufflets(self, n)
-Returns a Pattern of 'n' number of `PGroups` made from shuffled versions of the original Pattern
+Returns a Pattern of `n` number of `PGroups` made from shuffled versions of the original Pattern
 
 ### sort(self)
 Used in place of sorted(pattern) to force type

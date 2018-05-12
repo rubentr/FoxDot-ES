@@ -16,12 +16,20 @@ ej. `d1 >> sawbass()`
 > chromatic dorian dorian2 egyptian freq harmonicMajor harmonicMinor indian justMajor justMinor locrian locrianMajor lydian lydianMinor major majorPentatonic melodicMinor minor minorPentatonic mixolydian phrygian prometheus ryan zhi
 
 ej. `Scale.default.set("minor")`
-    `Scale.deafult="minor"`
+    `Scale.default="minor"`
+
+## Master
+¿?
+`Master().formant=var([0,4],[28,4])'
 
 ## bpm
 Beats por minuto
 
 `Clock.bpm=150`
+
+Podemos acelerar o disminuir los *bpm* añadiendo los signos `+` o `-`. Por ejemplo,
+
+`Clock.bpm+=10`
 
 ## Efectos/ Atributos
 `print(Player.get_attributes())`

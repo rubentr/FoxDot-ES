@@ -31,6 +31,7 @@ Vuelve a compilar la biblioteca de clases SuperCollider yendo a Language -> Reco
 Si no está instalado Git, puedes descargar e instalar los Quarks necesarios de SuperCollider directamente desde GitHub ejecutando las 2 líneas de código a continuación en SuperCollider:
 
 `Quarks.install("https://github.com/Qirky/FoxDotQuark.git")`
+
 `Quarks.install("https://github.com/supercollider-quarks/BatLib.git")`
 
 ## Inicio
